@@ -20,6 +20,14 @@ passport.use(
   })
 );
 
+
+app.get(
+  '/auth/google', 
+  passport.authenticate('google', {
+    scope: ['profile', 'email']  //ask google to give access to...
+  })
+);
+
 //heroku environment variables
 const PORT = process.env.PORT || 5000;
 app.listen(PORT); 
