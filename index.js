@@ -1,37 +1,12 @@
 //node server only supports commonjs 
 // no support for es2015 modules
 const express = require('express'); 
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const keys = require('./config/keys');
-
+require('./services/passport'); // run everything in passport js 
+const authRoutes = require('./routes/authRoutes');
 //could have mutiple applications 
 //most projects will only use one
 const app = express(); 
-
-//Allowing passport to use google oauth 2.0
-passport.use(
-  new GoogleStrategy({
-    clientID: keys.googleClientID, 
-    clientSecret: keys.googleClientSecret, 
-    callbackURL: '/auth/google/callback' //handles user coming back to application 
-  }, (accessToken, refreshToken, profile, done) => {
-     console.log('access Token ' , accessToken);
-     console.log('Refresh Token', refreshToken);
-     console.log('profile: ', profile); 
-  })
-);
-
-
-app.get(
-  '/auth/google', 
-  passport.authenticate('google', {
-    scope: ['profile', 'email']  //ask google to give access to...
-  })
-);
-
-app.get('/auth/google/callback', 
-        passport.authenticate('google'));
+authRoutes(app); 
 
 //heroku environment variables
 const PORT = process.env.PORT || 5000;
