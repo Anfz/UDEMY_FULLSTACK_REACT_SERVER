@@ -1,8 +1,18 @@
 //node server only supports commonjs 
 // no support for es2015 modules
 const express = require('express'); 
-require('./services/passport'); // run everything in passport js 
+
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
+
+
+require('./services/passport'); // run everything in passport js 
+require('./models/User');
+
+
+mongoose.connect(keys.mongoURI);
+
 //could have mutiple applications 
 //most projects will only use one
 const app = express(); 
