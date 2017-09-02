@@ -6,6 +6,17 @@ const keys = require('../config/keys');
 //get the user model from mongoose.  We loaded it in User.js
 const User = mongoose.model('users');
 
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+}); 
+
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+  .then( user => {
+    done(null, user); 
+  });
+});
+
 //Allowing passport to use google oauth 2.0
 passport.use(
   new GoogleStrategy(
@@ -28,7 +39,6 @@ passport.use(
             new User({googleId: profile.id})
             .save()
             .then(user => done(null, user));
-
           }
         })
       }
