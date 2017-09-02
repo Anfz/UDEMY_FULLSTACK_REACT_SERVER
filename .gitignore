@@ -58,5 +58,5 @@ typings/
 .env
 
 #config dir
-config/keys.js
+config/dev.js
 
