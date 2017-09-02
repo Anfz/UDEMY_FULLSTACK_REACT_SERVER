@@ -6,9 +6,10 @@ const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
 
-
-require('./services/passport'); // run everything in passport js 
+//make sure you define models first 
 require('./models/User');
+require('./services/passport'); // run everything in passport js 
+
 
 
 mongoose.connect(keys.mongoURI);
