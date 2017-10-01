@@ -5,7 +5,9 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(() => [], {}, applyMiddleware()); 
+import reducers from './reducers'; 
+
+const store = createStore(reducers, {}, applyMiddleware()); 
 
 ReactDOM.render(
     <Provider store={store}><App /></Provider>, 
