@@ -12,7 +12,7 @@ import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers'; 
 
 
-const store = createStore(reducers, {}, applyMiddleware()); 
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk)); 
 
 ReactDOM.render(
     <Provider store={store}><App /></Provider>, 
