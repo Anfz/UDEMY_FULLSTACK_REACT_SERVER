@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport'); 
 const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
+const billingRoutes = require('./routes/billingRoutes');
 
 //make sure you define models first 
 require('./models/User');
@@ -30,6 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 authRoutes(app); 
+billingRoutes(app);
 
 //heroku environment variables
 const PORT = process.env.PORT || 5000;
