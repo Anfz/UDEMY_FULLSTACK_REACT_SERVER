@@ -14,7 +14,16 @@ const billingRoutes = require('./routes/billingRoutes');
 require('./models/User');
 require('./services/passport'); // run everything in passport js 
 
+if (process.env.NODE_ENV === 'production'){
+  //ensure express will serve up assets 
+  app.use(express.static('client/build'));
 
+  //express will serve up index.html if it doesn't know the route 
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 mongoose.connect(keys.mongoURI);
 
