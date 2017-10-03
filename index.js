@@ -14,6 +14,9 @@ const billingRoutes = require('./routes/billingRoutes');
 require('./models/User');
 require('./services/passport'); // run everything in passport js 
 
+const app = express(); 
+mongoose.connect(keys.mongoURI);
+
 if (process.env.NODE_ENV === 'production'){
   //ensure express will serve up assets 
   app.use(express.static('client/build'));
@@ -25,11 +28,11 @@ if (process.env.NODE_ENV === 'production'){
   });
 }
 
-mongoose.connect(keys.mongoURI);
+
 
 //could have mutiple applications 
 //most projects will only use one
-const app = express(); 
+
 //getting express to use cookies
 app.use(
   cookieSession({
