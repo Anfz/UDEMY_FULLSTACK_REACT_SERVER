@@ -17,19 +17,6 @@ require('./services/passport'); // run everything in passport js
 const app = express(); 
 mongoose.connect(keys.mongoURI);
 
-if (process.env.NODE_ENV === 'production'){
-  //ensure express will serve up assets 
-  app.use(express.static('client/build'));
-
-  //express will serve up index.html if it doesn't know the route 
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
-
-
-
 //could have mutiple applications 
 //most projects will only use one
 
@@ -46,6 +33,18 @@ app.use(bodyParser.json());
 
 authRoutes(app); 
 billingRoutes(app);
+
+if (process.env.NODE_ENV === 'production'){
+  //ensure express will serve up assets 
+  app.use(express.static('client/build'));
+
+  //express will serve up index.html if it doesn't know the route 
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
 
 //heroku environment variables
 const PORT = process.env.PORT || 5000;
