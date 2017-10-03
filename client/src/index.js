@@ -8,7 +8,6 @@ import reduxThunk from 'redux-thunk';
 
 
 import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers'; 
 
 
@@ -21,4 +20,4 @@ ReactDOM.render(
 
 console.log('STRIPE KEY IS', process.env.REACT_APP_STRIPE_KEY);   
 console.log('environment is',process.env.NODE_ENV) 
-registerServiceWorker();
+
