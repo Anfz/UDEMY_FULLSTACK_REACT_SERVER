@@ -12,7 +12,7 @@ const billingRoutes = require('./routes/billingRoutes');
 
 //make sure you define models first 
 require('./models/User');
-require('./modles/Survey');
+require('./models/Survey');
 require('./services/passport'); // run everything in passport js 
 
 const app = express(); 
