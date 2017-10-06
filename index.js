@@ -7,9 +7,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport'); 
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
-const authRoutes = require('./routes/authRoutes');
-const billingRoutes = require('./routes/billingRoutes');
-const surveyRoutes = require('./routes/surveyRoutes');
+
 
 //make sure you define models first 
 require('./models/User');
@@ -33,9 +31,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 
-authRoutes(app); 
-billingRoutes(app);
-surveyRoutes(app);
+require('./routes/authRoutes')(app); 
+require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production'){
   //ensure express will serve up assets 
