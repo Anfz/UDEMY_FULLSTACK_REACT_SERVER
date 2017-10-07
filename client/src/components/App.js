@@ -5,7 +5,7 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-const DashBoard = () => <h2>DashBoard</h2>;
+import DashBoard from './Dashboard';
 const SurveyNew = () => <h2>SurveyNew</h2>;
 
 
