@@ -12,7 +12,7 @@ class Mailer extends helper.Mail {
     this.subject = subject;
     this.body = new helper.Content('text/html', content);
     this.recipients = this.formatAddresses(recipients); 
-
+    
     this.addContent(this.body);
     this.addClickTracking(); 
     this.addRecipients(); 
@@ -50,7 +50,7 @@ class Mailer extends helper.Mail {
       body: this.toJSON()
     });
 
-    const response = this.sgApi.API(request); 
+    const response = await this.sgApi.API(request); 
     return response; 
   }
 
