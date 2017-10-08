@@ -12,9 +12,8 @@ const FIELDS = [
 class SurveyForm extends Component {
 
   renderFields(){
-    return _.map(FIELDS, field => {
-      return 
-      <Field key={field.name}
+    return _.map(FIELDS, field => {  
+     return <Field key={field.name}
         component={SurveyField}
         type="text"
         label={field.label} 
@@ -28,7 +27,9 @@ class SurveyForm extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit(values => console.log(values))}>       
           {this.renderFields()}
-          <button type="submit">Submit</button>
+          <button type="submit" className="teal btn-flat right white-text" >
+            Next <i className="material-icons right">done</i>
+          </button>
         </form>
       </div>
     );
