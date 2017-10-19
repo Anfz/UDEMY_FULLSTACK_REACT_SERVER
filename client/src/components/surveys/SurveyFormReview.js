@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-const SurveyReview = () => { 
+const SurveyFormReview = () => { 
   return (
     <div>
       <h5>Please confirm your entries</h5>
@@ -8,4 +8,4 @@ const SurveyReview = () => {
   )
 };
 
-export default SurveyReview; 
+export default SurveyFormReview; 
