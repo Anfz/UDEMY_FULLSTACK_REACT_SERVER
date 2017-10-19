@@ -40,7 +40,12 @@ class SurveyForm extends Component {
   }
 }
 
-function validate(){
+function validate(values){
+  const errors = {};
+  if (!values.title){
+    errors.title = 'You must provide a title'; 
+  }
+  return errors; 
   
 }
 
