@@ -27,6 +27,7 @@ module.exports = (app) => {
     const mailer = new Mailer(survey, surveyTemplate(survey)); 
     try {
     await mailer.send();
+    console.log('this would totally send');
     await survey.save(); 
     req.user.credits -=1; 
     const user = await req.user.save(); 
