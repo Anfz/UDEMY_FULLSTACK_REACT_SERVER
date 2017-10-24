@@ -3,17 +3,11 @@ import React, {Component} from 'react';
 import {reduxForm, Field} from 'redux-form';
 import {Link} from 'react-router-dom';
 import SurveyField from './SurveyField';
-
-const FIELDS = [
-  {label : 'Survey Title', name : 'title'},
-  {label : 'Subject Line', name : 'subject'},
-  {label : 'Email Body', name: 'body'},
-  {label : 'Receipient List', name: 'emails'},
-]
+import formFields from './formFields';
 class SurveyForm extends Component {
 
   renderFields(){
-    return _.map(FIELDS, field => {  
+    return _.map(formFields, field => {  
      return <Field key={field.name}
         component={SurveyField}
         type="text"
@@ -43,7 +37,7 @@ class SurveyForm extends Component {
 function validate(values){
   const errors = {};
   
-  _.each(FIELDS, ({name, label}) => {
+  _.each(formFields, ({name, label}) => {
     if (!values[name]){
       errors[name] = 'You must provide a value for the' + label; 
     }
